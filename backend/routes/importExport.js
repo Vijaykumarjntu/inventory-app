@@ -14,7 +14,7 @@ router.post('/import', upload.single('file'), async (req, res) => {
   const duplicates = [];
   let added = 0;
   let skipped = 0;
-
+  console.log("this part in import working")
   try {
     // Read and process CSV
     await new Promise((resolve, reject) => {
@@ -24,7 +24,7 @@ router.post('/import', upload.single('file'), async (req, res) => {
         .on('end', resolve)
         .on('error', reject);
     });
-
+    console.log("reading promise working")
     // Process each record
     for (const record of results) {
       const { name, unit, category, brand, stock, status, image } = record;

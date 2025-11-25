@@ -14,6 +14,12 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.post('/',async(req,res)=>{
+  const {name, unit, category, brand, stock, status} = req.body;
+  const query =  `insert into products(name,unit,category,brand,stock,status) values ?,?,?,?,?,?`;
+  await db.run(query,[name, unit, category, brand, stock, status])
+})
+
 // Search products
 router.get('/search', async (req, res) => {
   const db = req.app.get('db');
